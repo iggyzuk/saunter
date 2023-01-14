@@ -14,7 +14,7 @@ pub trait Listener: Send {
     fn tick(
         &mut self,
         dt: f32,
-        events: Vec<Event<Self::EventType>>,
+        events: &mut Vec<Event<Self::EventType>>,
         time: Instant,
     ) -> Result<Self::TickType, SaunterError>;
 }

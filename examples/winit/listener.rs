@@ -10,7 +10,7 @@ impl Listener for WinitListener {
     fn tick(
         &mut self,
         _dt: f32,
-        events: Vec<saunter::event::Event<winit::event::Event<'static, ()>>>,
+        events: &mut Vec<saunter::event::Event<winit::event::Event<'static, ()>>>,
         time: Instant,
     ) -> Result<WinitTick, SaunterError> {
         self.val = 1.0 - self.val;

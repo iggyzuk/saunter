@@ -68,8 +68,7 @@ impl<'a, T: Tick, E: Send + Clone> Loop<T, E> {
                 }
             }
             if let Ok(tick) =
-                self.listener
-                    .tick(self.tick_length.as_secs_f32(), self.events.clone(), tick_time)
+                self.listener.tick(self.tick_length.as_secs_f32(), &mut self.events, tick_time)
             {
                 let mut tick_wlock = ticks.write().unwrap();
                 log::debug!("lock aquired {:?}", std::time::Instant::now());
