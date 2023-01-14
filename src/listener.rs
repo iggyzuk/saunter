@@ -10,7 +10,7 @@ use crate::{error::SaunterError, event::Event, tick::Tick};
 /// [`EventType`](crate::listener::Listener::EventType) is the type of the event passed to the listener in the [`Event::Other(EventType)`](crate::event::Event::Other) variant.
 pub trait Listener: Send {
     type TickType: Tick;
-    type EventType: Send + Clone;
+    type EventType: Send;
     fn tick(
         &mut self,
         dt: f32,
