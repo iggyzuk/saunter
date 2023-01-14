@@ -6,10 +6,14 @@ pub struct WinitTick {
     time: Instant,
     pub val: f32,
 }
+
+pub struct WinitTickView {
+    pub val: f32,
+}
+
 impl saunter::tick::Tick for WinitTick {
-    fn lerp(&self, b: &Self, t: f32) -> Result<Self, MathError> {
-        Ok(WinitTick {
-            time: math::lerp_instant(&self.time, &b.time, t)?,
+    fn lerp(&self, b: &Self, t: f32) -> Result<WinitTickView, MathError> {
+        Ok(WinitTickView {
             val: math::lerp(self.val, b.val, t)?,
         })
     }
@@ -17,6 +21,8 @@ impl saunter::tick::Tick for WinitTick {
     fn get_time(&self) -> &Instant {
         &self.time
     }
+
+    type TickView = WinitTickView;
 }
 
 impl WinitTick {

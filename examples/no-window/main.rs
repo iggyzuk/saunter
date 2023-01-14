@@ -29,8 +29,8 @@ fn main() {
 
     let (mut tick_loop, event_sender, ticks): (Loop<_, ()>, _, &'static mut Arc<RwLock<Ticks<_>>>) =
         Loop::init(
-            Box::new(NoWindowListener { val: 1.0 }),
-            NoWindowTick::new(Instant::now(), 0.0),
+            Box::new(NoWindowListener { val: 1 }),
+            NoWindowTick::new(Instant::now(), 0),
             TPS,
         );
 
